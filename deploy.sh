@@ -4,6 +4,22 @@ set -e
 set -u
 set -o pipefail
 
+if [[ -z "$MYPROJECT" ]]; then
+  echo "Application name cannot be empty"
+fi
+
+if [[ -z "$MYREGISTRY" ]]; then
+  echo "Container registry cannot be empty"
+fi
+
+if [[ -z "$GIT_TOKEN_USERNAME" || -z "$GIT_TOKEN_PASSWORD" ]]; then
+  echo "Git(Private) token cannot be empty"
+fi
+
+if [[ -z "$REPO_URL_WITHOUT_HTTPS" ]]; then
+  echo "Git(Private) repo URL cannot be empty"
+fi
+
 # Script to generate a secret
 generate_secret() {
     PASS_LENGTH=20
