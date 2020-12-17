@@ -1,5 +1,5 @@
 {
-  "name": "nodejsexpressapp",
+  "name": "openshiftnodeapp",
   "version": "1.0.0",
   "description": "Start building your next Node.js Express app on IBM Cloud.",
   "private": true,
@@ -13,26 +13,6 @@
     "lint": "eslint --ignore-path .gitignore .",
     "fix": "eslint --ignore-path .gitignore . --fix",
     "test": "nyc mocha test --recursive --exit"
-  },
-  "husky": {
-    "hooks": {
-      "pre-commit": "npm run lint && npm run test && npm run check-coverage"
-    }
-  },
-  "nyc": {
-    "check-coverage": true,
-    "per-file": true,
-    "lines": 100,
-    "statements": 100,
-    "functions": 100,
-    "branches": 100,
-    "exclude": [
-      "test"
-    ],
-    "reporter": [
-      "lcov",
-      "text-summary"
-    ]
   },
   "dependencies": {
     "body-parser": "^1.19.0",
