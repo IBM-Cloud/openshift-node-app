@@ -11,7 +11,7 @@ generate_secret() {
     echo $secret
 }
 
-cat openshift.yaml | \
+cat openshift.template.yaml | \
   MYPROJECT=$MYPROJECT \
   MYREGISTRY=$MYREGISTRY \
   GIT_TOKEN_USERNAME=$GIT_TOKEN_USERNAME \
@@ -19,6 +19,6 @@ cat openshift.yaml | \
   REPO_URL_WITHOUT_HTTPS=$REPO_URL_WITHOUT_HTTPS \
   SECRET_GITHUB=$(generate_secret) \
   SECRET_GENERIC=$(generate_secret) \
-  envsubst \
-  | \
-  oc apply -f - || exit 1
+  envsubst > openshift.yaml
+  #| \
+  #oc apply -f - || exit 1

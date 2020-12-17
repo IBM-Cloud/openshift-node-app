@@ -9,4 +9,4 @@ localdev-config.json
 .nyc*
 *.env
 *.log
-
+openshift.yaml
