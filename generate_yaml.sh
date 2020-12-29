@@ -27,12 +27,26 @@ generate_secret() {
     echo $secret
 }
 
+# Check for HTTPS and replace with empty string
+REPO_URL=${REPO_URL_WITHOUT_HTTPS/https:\/\//}
+
+# Check for `.git` in the end
+# Get the repo name
+REPO_NAME="$(cut -d'/' -f3 <<<"$REPO_URL")"
+SUB='.git'
+if [[ "$REPO_NAME" == *"$SUB"* ]]; then
+  echo ".git is there"
+else
+  REPO_URL=${REPO_URL}${SUB}
+  echo $REPO_URL
+fi
+
 cat openshift.template.yaml | \
   MYPROJECT=$MYPROJECT \
   MYREGISTRY=$MYREGISTRY \
   GIT_TOKEN_USERNAME=$GIT_TOKEN_USERNAME \
   GIT_TOKEN_PASSWORD=$GIT_TOKEN_PASSWORD \
-  REPO_URL_WITHOUT_HTTPS=$REPO_URL_WITHOUT_HTTPS \
+  REPO_URL_WITHOUT_HTTPS=$REPO_URL \
   SECRET_GITHUB=$(generate_secret) \
   SECRET_GENERIC=$(generate_secret) \
   envsubst > openshift.yaml
