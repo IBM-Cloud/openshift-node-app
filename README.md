@@ -32,3 +32,8 @@ For step-by-step instructions, refer this [tutorial](https://cloud.ibm.com/docs/
 
 ### Starter application
 The starter application is scaffolded using [IBM Cloud Developer Tools CLI](https://cloud.ibm.com/docs/apps?topic=apps-create-deploy-app-cli) `ibmcloud dev`.
+
+This starter application is a simple microservice that incorporates the [Express web framework](https://expressjs.com/) to provide a landing page and two endpoints. Use this repository as a template for your own application.
+
+- The [Swagger UI](http://swagger.io/swagger-ui/) is running on: `/swagger/api-docs`
+- Health endpoint: `/health`
