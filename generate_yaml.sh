@@ -33,12 +33,10 @@ REPO_URL=${REPO_URL_WITHOUT_HTTPS/https:\/\//}
 # Check for `.git` in the end
 # Get the repo name
 REPO_NAME="$(cut -d'/' -f3 <<<"$REPO_URL")"
+echo $REPO_NAME
 SUB='.git'
-if [[ "$REPO_NAME" == *"$SUB"* ]]; then
-  echo ".git is there"
-else
+if [[ "$REPO_NAME" != *"$SUB"* ]]; then
   REPO_URL=${REPO_URL}${SUB}
-  echo $REPO_URL
 fi
 
 cat openshift.template.yaml | \
