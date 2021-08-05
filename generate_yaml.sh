@@ -25,7 +25,7 @@ use_private_registry() {
     fi
     
     GIT_REPO_URL="https://github.com/IBM-Cloud/openshift-node-app"
-    MYPROJECT="$MYPROJECT-registry"
+    MYPROJECT="$MYPROJECT-priv-reg"
     
     cat openshift.template.yaml | \
     MYPROJECT=$MYPROJECT \
@@ -38,7 +38,7 @@ use_private_registry() {
     #| \
     #oc apply -f - || exit 1
 
-    echo 'export MYPROJECT="$MYPROJECT-reg"'
+    echo 'export MYPROJECT="$MYPROJECT-priv-reg"'
 }
 
 use_private_repository() {
@@ -61,7 +61,7 @@ use_private_repository() {
         REPO_URL=${REPO_URL}${SUB}
     fi
     
-    MYPROJECT="$MYPROJECT-private-git"
+    MYPROJECT="$MYPROJECT-repo"
     GIT_REPO_URL="https://$GIT_TOKEN_USERNAME:$GIT_TOKEN_PASSWORD@$REPO_URL"
 
     cat openshift.template.yaml | \
@@ -77,7 +77,7 @@ use_private_repository() {
     #| \
     #oc apply -f - || exit 1
 
-    echo 'export MYPROJECT="$MYPROJECT-private-git"'
+    echo 'export MYPROJECT="$MYPROJECT-repo"'
 }
 
 $1
