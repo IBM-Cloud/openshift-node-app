@@ -42,7 +42,7 @@ use_private_registry() {
 }
 
 use_private_repository() {
-     echo "Generating YAML for private Gitlab repository and private container registry..."
+    echo "Generating YAML for private Gitlab repository and private container registry..."
     if [[ -z "$GIT_TOKEN_USERNAME" || -z "$GIT_TOKEN_PASSWORD" ]]; then
         echo "Git(Private) token cannot be empty"
     fi
