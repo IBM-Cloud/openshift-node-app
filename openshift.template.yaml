@@ -10,33 +10,6 @@ items:
       app: $MYPROJECT
       app.kubernetes.io/component: $MYPROJECT
       app.kubernetes.io/instance: $MYPROJECT
-    name: ubi
-  spec:
-    lookupPolicy:
-      local: false
-    tags:
-    - annotations:
-        openshift.io/imported-from: registry.access.redhat.com/ubi7/ubi
-      from:
-        kind: DockerImage
-        name: registry.access.redhat.com/ubi7/ubi
-      generation: null
-      importPolicy: {}
-      name: latest
-      referencePolicy:
-        type: ""
-  status:
-    dockerImageRepository: ""
-- apiVersion: image.openshift.io/v1
-  kind: ImageStream
-  metadata:
-    annotations:
-      openshift.io/generated-by: OpenShiftNewApp
-    creationTimestamp: null
-    labels:
-      app: $MYPROJECT
-      app.kubernetes.io/component: $MYPROJECT
-      app.kubernetes.io/instance: $MYPROJECT
     name: $MYPROJECT
   spec:
     dockerImageRepository: $MYREGISTRY/$MYNAMESPACE/$MYPROJECT
@@ -67,7 +40,7 @@ items:
     resources: {}
     source:
       git:
-        uri: https://$GIT_TOKEN_USERNAME:$GIT_TOKEN_PASSWORD@$REPO_URL_WITHOUT_HTTPS
+        uri: $REPO_URL
       type: Git
     strategy:
       dockerStrategy:
