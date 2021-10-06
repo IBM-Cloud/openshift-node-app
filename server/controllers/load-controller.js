@@ -1,8 +1,8 @@
 // get health of application
 exports.getLoad = (req, res, next) => {
   const load = req.params.load;
-  res.setHeader("Content-Type", "text/html; charset=UTF-8");
-  res.writeHead(200);
+  //res.setHeader("Content-Type", "text/html; charset=UTF-8");
+  //res.writeHead(200);
   req.setTimeout(0);
   var value = 1;
   async function addDelay() {
