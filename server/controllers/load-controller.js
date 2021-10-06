@@ -8,7 +8,7 @@ exports.getLoad = (req, res, next) => {
   async function addDelay() {
     res.write("Total requests: " + load);
     while (value < load) {
-      await sleep(3000);
+      await sleep(1000);
       //setTimeout(function() {
       //console.log("Looping count:", value);
       console.log("Current time in UTC:", new Date().toISOString());
