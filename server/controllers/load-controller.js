@@ -9,11 +9,8 @@ exports.getLoad = (req, res, next) => {
     res.write("Sending request...\n");
     while (value < load) {
       await sleep(1000);
-      console.log("Current time in UTC:", new Date().toISOString());
-      // For UI(browser)
-      res.write(
-        "<p>" + "Response#" + value + " at " + new Date().toISOString() + "</p>"
-      );
+      //console.log("Current time in UTC:", new Date().toISOString());
+      res.write("Server responded" + " at " + new Date().toISOString() + "\n");
       value++;
     }
     res.end();
