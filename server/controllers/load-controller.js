@@ -6,12 +6,11 @@ exports.getLoad = (req, res, next) => {
   req.setTimeout(0);
   var value = 1;
   async function addDelay() {
-    res.write("Total requests: " + load);
+    res.write("Sending request...\n");
     while (value < load) {
-      await sleep(5000);
-      //setTimeout(function() {
-      //console.log("Looping count:", value);
+      await sleep(1000);
       console.log("Current time in UTC:", new Date().toISOString());
+      // For UI(browser)
       res.write(
         "<p>" + "Response#" + value + " at " + new Date().toISOString() + "</p>"
       );
