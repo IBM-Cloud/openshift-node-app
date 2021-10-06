@@ -1,6 +1,7 @@
 // get health of application
 exports.getLoad = (req, res) => {
     const load = req.params.load;
+    req.setTimeout(0)
     //console.log(load);
     var value = 0;
     while(value < load){
