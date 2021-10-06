@@ -29,7 +29,7 @@ app.listen(port, () => {
   console.log(`App UI available http://localhost:${port}`);
   console.log(`Swagger UI available http://localhost:${port}/swagger/api-docs`);
   console.log(`Generate load available http://localhost:${port}/load/10000`);
-});
+}).setTimeout(500000);
 
 // error handler for unmatched routes or api calls
 app.use((req, res, next) => {
