@@ -21,12 +21,13 @@ exports.getLoad = (req, res, next) => {
         primes.push(candidate);
       }
     }
-    return primes;
+    res.send(".");
+   
   }
 
   function doPointlessComputationsWithBlocking() {
     var primes = calculatePrimes(iterations, multiplier);
-    console.log(primes);
+    //console.log(primes);
   }
   doPointlessComputationsWithBlocking();
 };
