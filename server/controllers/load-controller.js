@@ -18,13 +18,13 @@ exports.getLoad = (req, res, next) => {
           isPrime = false;
           break;
         }
-        res.write(".");
       }
       if (isPrime) {
         primes.push(candidate);
       }
     }
-    return primes;
+     res.send(primes);
+    //return primes;
   }
 
   function doPointlessComputationsWithBlocking() {
