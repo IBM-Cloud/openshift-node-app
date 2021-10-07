@@ -1,8 +1,6 @@
 // get health of application
 exports.getLoad = (req, res, next) => {
   const load = req.params.load;
-  //res.setHeader("Content-Type", "text/html; charset=UTF-8");
-  //res.writeHead(200);
   req.setTimeout(0);
   const iterations = load;
   const multiplier = 1000000000;
@@ -28,12 +26,8 @@ exports.getLoad = (req, res, next) => {
 
   function doPointlessComputationsWithBlocking() {
     var primes = calculatePrimes(iterations, multiplier);
-    //pointlessComputationsButton.disabled = false;
     console.log(primes);
   }
   doPointlessComputationsWithBlocking();
 };
 
-function sleep(ms) {
-  return new Promise((resolve) => setTimeout(resolve, ms));
-}
