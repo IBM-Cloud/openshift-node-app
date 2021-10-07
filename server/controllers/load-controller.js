@@ -3,19 +3,34 @@ exports.getLoad = (req, res, next) => {
   const load = req.params.load;
   //res.setHeader("Content-Type", "text/html; charset=UTF-8");
   //res.writeHead(200);
-  req.setTimeout(0);
-  var value = 1;
-  async function addDelay() {
-    res.write("Sending request...\n");
-    while (value < load) {
-      await sleep(1000);
-      //console.log("Current time in UTC:", new Date().toISOString());
-      res.write("Server responded" + " at " + new Date().toISOString() + "\n");
-      value++;
+  const iterations = 50;
+  const multiplier = load;//1000000000;
+
+  function calculatePrimes(iterations, multiplier) {
+    var primes = [];
+    for (var i = 0; i < iterations; i++) {
+      var candidate = i * (multiplier * Math.random());
+      var isPrime = true;
+      for (var c = 2; c <= Math.sqrt(candidate); ++c) {
+        if (candidate % c === 0) {
+          // not prime
+          isPrime = false;
+          break;
+        }
+      }
+      if (isPrime) {
+        primes.push(candidate);
+      }
     }
-    res.end();
+    return primes;
   }
-  addDelay();
+
+  function doPointlessComputationsWithBlocking() {
+    var primes = calculatePrimes(iterations, multiplier);
+    //pointlessComputationsButton.disabled = false;
+    console.log(primes);
+  }
+  doPointlessComputationsWithBlocking();
 };
 
 function sleep(ms) {
