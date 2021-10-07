@@ -13,6 +13,7 @@ exports.getLoad = (req, res, next) => {
       var candidate = i * (multiplier * Math.random());
       var isPrime = true;
       for (var c = 2; c <= Math.sqrt(candidate); ++c) {
+        res.write(".");
         if (candidate % c === 0) {
           // not prime
           isPrime = false;
@@ -23,8 +24,7 @@ exports.getLoad = (req, res, next) => {
         primes.push(candidate);
       }
     }
-     res.send(primes);
-    //return primes;
+    return primes;
   }
 
   function doPointlessComputationsWithBlocking() {
