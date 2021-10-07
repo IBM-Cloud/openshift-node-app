@@ -3,8 +3,9 @@ exports.getLoad = (req, res, next) => {
   const load = req.params.load;
   //res.setHeader("Content-Type", "text/html; charset=UTF-8");
   //res.writeHead(200);
-  const iterations = 50;
-  const multiplier = load;//1000000000;
+  req.setTimeout(0);
+  const iterations = load;
+  const multiplier = 1000000000;
 
   function calculatePrimes(iterations, multiplier) {
     var primes = [];
