@@ -28,7 +28,7 @@ const port = process.env.PORT || 3000;
 app.listen(port, () => {
   console.log(`App UI available http://localhost:${port}`);
   console.log(`Swagger UI available http://localhost:${port}/swagger/api-docs`);
-  console.log(`Generate load available http://localhost:${port}/load/10000`);
+  console.log(`Load generation available http://localhost:${port}/load/10000`);
 });
 
 // error handler for unmatched routes or api calls
