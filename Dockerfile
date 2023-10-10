@@ -1,7 +1,4 @@
-FROM registry.access.redhat.com/ubi8/ubi
-
-RUN yum install https://rpm.nodesource.com/pub_18.x/nodistro/repo/nodesource-release-nodistro-1.noarch.rpm -y
-RUN yum install nodejs -y --setopt=nodesource-nodejs.module_hotfixes=1
+FROM registry.access.redhat.com/ubi8/nodejs-8
 
 RUN mkdir /app
 WORKDIR /app
