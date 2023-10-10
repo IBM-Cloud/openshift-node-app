@@ -1,7 +1,7 @@
 FROM registry.access.redhat.com/ubi7/ubi
 
-RUN curl -sL https://rpm.nodesource.com/setup_18.x | bash -
-RUN yum install -y nodejs
+RUN yum install https://rpm.nodesource.com/pub_18.x/nodistro/repo/nodesource-release-nodistro-1.noarch.rpm -y
+RUN yum install nodejs -y --setopt=nodesource-nodejs.module_hotfixes=1
 
 RUN mkdir /app
 WORKDIR /app
