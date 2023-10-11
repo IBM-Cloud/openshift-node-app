@@ -1,7 +1,6 @@
-FROM registry.access.redhat.com/ubi7/ubi
+FROM registry.access.redhat.com/ubi8/nodejs-10
 
-RUN curl -sL https://rpm.nodesource.com/setup_16.x | bash -
-RUN yum install -y nodejs
+USER root
 
 RUN mkdir /app
 WORKDIR /app
