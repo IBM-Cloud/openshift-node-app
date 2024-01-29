@@ -1,15 +1,15 @@
-FROM registry.access.redhat.com/ubi8/ubi
+FROM registry.access.redhat.com/ubi8/nodejs-20
 
-RUN  yum install https://rpm.nodesource.com/pub_18.x/nodistro/repo/nodesource-release-nodistro-1.noarch.rpm -y
-RUN  yum install nodejs -y --setopt=nodesource-nodejs.module_hotfixes=1
+USER 0
+RUN fix-permissions ./
+USER 1001
 
-RUN mkdir /app
-WORKDIR /app
-
-COPY package.json /app
-RUN npm install --only=prod
-COPY server /app/server
-COPY public /app/public
+RUN mkdir ./app
+WORKDIR $HOME/app
+COPY package.json .
+RUN npm install --omit=dev
+COPY server ./server
+COPY public ./public
 
 ENV NODE_ENV production
 ENV PORT 3000
